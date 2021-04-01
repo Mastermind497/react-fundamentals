@@ -1,7 +1,7 @@
 import {render} from '@testing-library/react'
 import {alfredTip} from '@kentcdodds/react-workshop-app/test-utils'
-import {App} from '../final/05'
-// import {App} from '../exercise/05'
+// import {App} from '../final/05'
+import {App} from '../exercise/05'
 
 test('renders the correct styles new', () => {
   render(<App />)

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import {render, screen, within} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import {App} from '../final/08'
-// import {App} from '../exercise/08'
+// import {App} from '../final/08'
+import {App} from '../exercise/08'
 
 test('renders', () => {
   const {container} = render(<App />)
