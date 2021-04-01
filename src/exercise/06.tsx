@@ -8,6 +8,7 @@ function Box({
   size,
   style: props,
   children,
+  ...otherProps
 }: {
   size: string
   style: React.CSSProperties
@@ -15,7 +16,12 @@ function Box({
 }): JSX.Element {
   props.fontStyle = 'italic'
   return (
-    <div className={`box box--${size}`} style={props} children={children} />
+    <div
+      className={`box box--${size}`}
+      style={props}
+      children={children}
+      {...otherProps}
+    />
   )
 }
 
