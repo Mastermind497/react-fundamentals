@@ -3,29 +3,24 @@
 
 import * as React from 'react'
 
-interface FormElements extends HTMLFormControlsCollection {
-  usernameInput: HTMLInputElement
-}
-
-interface UsernameFormElement extends HTMLFormElement {
-  readonly elements: FormElements
-}
-
 function UsernameForm({
   onSubmitUsername,
 }: {
   onSubmitUsername: (username: string) => void
 }) {
-  function handleSubmit(event: React.SyntheticEvent<UsernameFormElement>) {
+  const usernameInputRef = React.useRef<HTMLInputElement>(null)
+
+  function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault()
-    onSubmitUsername(event.currentTarget.elements.usernameInput.value)
+    if (usernameInputRef.current)
+      onSubmitUsername(usernameInputRef.current.value)
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="usernameInput">Username:</label>
-        <input id="usernameInput" type="text" />
+        <input id="usernameInput" type="text" ref={usernameInputRef} />
       </div>
       <button type="submit">Submit</button>
     </form>
