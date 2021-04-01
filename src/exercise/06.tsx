@@ -5,17 +5,17 @@ import * as React from 'react'
 import '../box-styles.css'
 
 function Box({
-  className,
+  size,
   style: props,
   children,
 }: {
-  className: string
+  size: string
   style: React.CSSProperties
   children: React.ReactNode
 }): JSX.Element {
   props.fontStyle = 'italic'
   return (
-    <div className={`box ${className}`} style={props} children={children} />
+    <div className={`box box--${size}`} style={props} children={children} />
   )
 }
 
@@ -28,17 +28,17 @@ function Box({
 // 🐨 add a style prop to each of them as well so their background color
 // matches what the text says it should be as well as `fontStyle: 'italic'`
 const smallBox = (
-  <Box className="box--small" style={{backgroundColor: 'lightblue'}}>
+  <Box size="small" style={{backgroundColor: 'lightblue'}}>
     small lightblue box
   </Box>
 )
 const mediumBox = (
-  <Box className="box box--medium" style={{backgroundColor: 'pink'}}>
+  <Box size="medium" style={{backgroundColor: 'pink'}}>
     medium pink box
   </Box>
 )
 const largeBox = (
-  <Box className="box--large" style={{backgroundColor: 'orange'}}>
+  <Box size="large" style={{backgroundColor: 'orange'}}>
     large orange box
   </Box>
 )
