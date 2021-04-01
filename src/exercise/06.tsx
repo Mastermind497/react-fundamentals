@@ -6,17 +6,16 @@ import '../box-styles.css'
 
 function Box({
   size,
-  style,
+  style = {},
   children,
   ...otherProps
-}: {
-  size: string
-  style: React.CSSProperties
-  children: React.ReactNode
-}): JSX.Element {
+}: React.HTMLAttributes<HTMLDivElement> & {
+  size?: 'small' | 'medium' | 'large'
+}) {
+  const classSizeName = style ? `box-${style}` : ''
   return (
     <div
-      className={`box box--${size}`}
+      className={`box ${classSizeName}`}
       style={{fontStyle: 'italic', ...style}}
       children={children}
       {...otherProps}
