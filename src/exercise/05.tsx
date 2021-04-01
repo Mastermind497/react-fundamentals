@@ -3,18 +3,21 @@
 
 import * as React from 'react'
 
+type Operator = '+' | '-' | '*' | '/';
+type OperationFn = (left: number, right: number) => number
+
 // 🐨 add type definitions for each function
-const operations = {
-  '+': (left: number, right: number) => left + right,
-  '-': (left: number, right: number) => left - right,
-  '*': (left: number, right: number) => left * right,
-  '/': (left: number, right: number) => left / right,
+const operations: Record<Operator, OperationFn> = {
+  '+': (left, right) => left + right,
+  '-': (left, right) => left - right,
+  '*': (left, right) => left * right,
+  '/': (left, right) => left / right,
 }
 
 // 🐨 create a type called CalculatorProps
 type CalculatorProps = {
   left?: number
-  operator?: keyof typeof operations 
+  operator?: Operator
   right?: number
 }
 
