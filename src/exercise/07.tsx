@@ -8,21 +8,15 @@ function UsernameForm({
 }: {
   onSubmitUsername: (username: string) => void
 }) {
-  const usernameInputRef = React.useRef<HTMLInputElement>(null)
-
-  const [error, setError] = React.useState(null)
+  const [username, setUsername] = React.useState('')
 
   function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault()
-    if (usernameInputRef.current)
-      onSubmitUsername(usernameInputRef.current.value)
+    onSubmitUsername(event.currentTarget.value)
   }
 
   function handleChange(event: React.SyntheticEvent<HTMLInputElement>) {
-    const isValid =
-      usernameInputRef.current.value ===
-      usernameInputRef.current.value.toLowerCase()
-    setError(isValid ? null : 'Username must be lower case')
+    setUsername(event.currentTarget.value.toLowerCase())
   }
 
   return (
@@ -32,16 +26,11 @@ function UsernameForm({
         <input
           id="usernameInput"
           type="text"
-          ref={usernameInputRef}
           onChange={handleChange}
+          value={username}
         />
       </div>
-      <div role="alert" style={{color: 'red'}}>
-        {error}
-      </div>
-      <button disabled={Boolean(error)} type="submit">
-        Submit
-      </button>
+      <button type="submit">Submit</button>
     </form>
   )
 }
